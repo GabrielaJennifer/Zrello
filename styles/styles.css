@@ -1,0 +1,110 @@
+.wrapper {
+	margin: 0;
+	background-color: #EEE;
+	height: 100%;
+	position: relative;
+	margin-bottom: 10px;
+}
+.title {
+	margin-top: 40px;
+	margin-left: 40px;
+	position: absolute;
+	font-family: Futura, Helvetica, sans-serif;
+}
+.list {
+	width: 23%;
+	margin-right: 10px;
+	float: left;
+	background-color: white;
+	padding:10px;
+	box-sizing: border-box;
+	font-size:14px;
+	border: 1px solid #eee;
+	line-height: 1.7;
+
+}
+.listwrapper {
+	width: 100%;
+	height: 90%;
+	margin-top: 70px;
+	margin-left: 40px;
+	position: absolute;
+	font-family: Futura, Helvetica, sans-serif;
+	clear:both;
+}
+.delete-list {
+	float:right;
+	padding:5px 10px;
+	border:1px solid #ddd;
+}
+.card {
+    height: 27%;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    padding:5px;
+    clear: both;
+    background: #fff;
+}
+.cardtitle {	
+	margin-top: 40px;
+    margin-left: 10%;
+    position: absolute;
+	font-family: Futura, Helvetica, sans-serif;
+}
+.carddesc textarea {
+	margin-top: 12%;
+    margin-left: 10%;
+    resize: none;
+    float: left;
+}
+.goback {
+	font-family: Futura, Helvetica, sans-serif;
+	margin-left: 10%;
+	margin-top: 10%;
+	cursor: pointer;
+}
+.comment textarea {
+	margin-top: 2%;
+    margin-left: 10%;
+    resize: none;
+    float: left;
+}
+
+.comment {
+	margin-top: 20px;
+}
+
+.deleteCard {
+	font-family: Futura, Helvetica, sans-serif;
+	text-align: right;
+    margin-right: 7%;
+    float: right;
+    margin-top: 12%;
+}
+.addList{
+	float:left;
+    background: #fff;
+    padding: 5px 10px;
+    border: 1px solid #eee;
+    width: 20%;
+}
+.emptyBoard{
+	width: 50%;
+    margin: 13% 25%;
+    text-align: center;
+    position: absolute;
+    z-index: 10;
+}
+.emptyBoard input[type=text]{
+	height: 30px;
+    min-width: 200px;
+    box-shadow: none;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+.addBoard{
+	margin-top: 10px;
+}
+.card-wrapper {
+	clear: both;
+}

@@ -1,0 +1,17 @@
+<div class="wrapper">
+	<div class="cardtitle" >
+		{{card.card_title}}
+	</div>
+	<div class="carddesc">
+		<textarea rows = "5" cols = "75" ng-model = "card.card_desc" ng-blur = "updateDesc(card,card.card_desc)"></textarea>
+	</div>
+	<div class="deleteCard" ng-click="deleteCard(card)">
+		Delete card
+	</div>
+
+	<div style="clear:both">
+	</div>
+	<div ng-click="goBack()" class="goback">
+	Go Back
+	</div>
+</div>

@@ -1,0 +1,28 @@
+<html ng-app="zrelloApp">
+<head >
+	<title>Zrello</title>
+	<link rel="stylesheet" type="text/css" href="styles/styles.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+	<script type="text/javascript" src="angular/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+    <script type="text/javascript" src="angular/angular-route.min.js"></script>
+	<script src="angular/angular-dragdrop.min.js"></script>
+	<script type="text/javascript" src="scripts/main.js"></script>
+    <script type="text/javascript" src="scripts/constants.js"></script>
+    <script type="text/javascript" src="scripts/services.js"></script>
+</head>
+<body>
+	<!-- Name:
+	<span><input type="text" ng-model="name"/></span>
+	<div>{{name}}</div>
+	<div ng-controller="home">
+		<div ng-click="call()">HOME</div>
+	</div> -->
+	<div ui-view ng-class="transition">
+		
+	</div>
+
+
+</body>
+</html>
