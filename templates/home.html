@@ -8,27 +8,18 @@
 				ADD BOARD
 			</div>
 		</div>
-		<div class="listwrapper" >
+		<div class="listwrapper" ui-sortable ng-model="lists">
 			<div class="list" ng-repeat = "list in lists" ng-init="getCards(list)">
 				{{list.list_title}}
 				<div class="delete-list" ng-click = "deleteList(list.list_id)">
 					Delete this list
 				</div>
-				<!-- <div ng-click = "getCards(list)" ng-show="!list.cards.length" class="getcards"> 
-					Get Cards
-				</div> -->
-				<div class="card-wrapper" data-drop="true" data-jqyoui-options jqyoui-droppable>
-					<div class="card" data-drag="true" jqyoui-draggable="{animate:true}" ng-repeat = "card in list.cards" ng-dblclick="openCard(card)" data-jqyoui-options="{revert: 'invalid'}" ng-show = "card.card_title">
-						{{card.card_title}}
+				
+				<div ui-sortable="sortableOptions" class="card-wrapper" ng-model="list.cards" >
+					<div  ng-repeat = "card in list.cards track by card.card_id" class="card"  ng-dblclick="openCard(card)"  >
+						<div>{{card.card_title}}</div>
 					</div>
 				</div>
-				<!-- <div class="card" data-drop="true" data-jqyoui-options jqyoui-droppable>
-					<div class="btn btn-success" data-drag="false" data-jqyoui-options jqyoui-draggable ng-hide="!card.card_title">{{card.card_title}}</div>
-				</div> -->
-
-				<!-- <div class="card" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{animate:true}" ng-repeat = "card in list.cards" ng-click="openCard(card)">
-					{{card.card_title}}
-				</div> -->
 				<div class="card" ng-show="list.showAddCard">				
 					<input type="text"/ ng-model="newCardTitle" ng-blur="saveCard(list,newCardTitle)">
 				</div>
@@ -37,7 +28,7 @@
 				</div>
 				
 			</div>
-			<div ng-click="createList()" class="addList" ng-show="board.board_title">
+			<div ng-click="createList()" class="list" ng-show="board.board_title">
 				Add new list...
 				<div ng-show="addList" >
 					<input type="text"/ ng-model="newListTitle" ng-blur="saveList(newListTitle)">
@@ -45,4 +36,5 @@
 			</div>
 			
 		</div>
+
 </div>	

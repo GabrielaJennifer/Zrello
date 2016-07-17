@@ -1,4 +1,5 @@
-var demoApp=angular.module('zrelloApp',['ui.router','ngRoute','ngDragDrop']);
+
+var demoApp=angular.module('zrelloApp',['ui.router','ngRoute','ui.sortable']);
 	demoApp.controller('homeController',function ($scope,Services,$state){
 			function init() {
 				$scope.addList = false;
@@ -22,6 +23,18 @@ var demoApp=angular.module('zrelloApp',['ui.router','ngRoute','ngDragDrop']);
 				});
 			}
 
+			$scope.dragControlListeners = {
+			    accept: function (sourceItemHandleScope, destSortableScope) {return true},//override to determine drag is allowed or not. default is true.
+			    itemMoved: function (event) {//Do what you want
+
+			    },
+			    orderChanged: function(event) {//Do what you want
+			    },
+			    //containment: '.list',//optional param.
+			    clone: true, //optional param for clone feature.
+			    allowDuplicates: false //optional param allows duplicates to be dropped.
+			};
+
 			$scope.addBoard=function(board_title){
 				var data ={
 				 	"board_title" : board_title
@@ -36,19 +49,12 @@ var demoApp=angular.module('zrelloApp',['ui.router','ngRoute','ngDragDrop']);
 			};
 
 			$scope.createList = function() {
-				if($scope.lists && $scope.lists.length != 3){
-					$scope.addList = true;
-				}
-				else if(!$scope.lists) {
-					$scope.addList = true;
-				}
-				else{
-					alert("Cannot add more lists");
-				}
+				
+
+				$scope.addList = true;
 			}
 
 			$scope.saveList = function(newListTitle) {
-				if($scope.lists.length < 4 ){
 					$scope.addList = false;
 					var data = {
 						board_id: $scope.board.board_id,
@@ -60,10 +66,20 @@ var demoApp=angular.module('zrelloApp',['ui.router','ngRoute','ngDragDrop']);
 					}, function(error){
 						alert(error);
 					});
-				}
+				
 				
 				
 			}
+			$scope.sortableOptions = createOptions('A');
+
+			function createOptions (listName) {
+			    var _listName = listName;
+			    var options = {
+			      placeholder: "card",
+			      connectWith: ".card-wrapper"
+			    };
+			    return options;
+			  }
 
 			$scope.deleteList = function(list_id) {
 				
@@ -79,16 +95,8 @@ var demoApp=angular.module('zrelloApp',['ui.router','ngRoute','ngDragDrop']);
 			}
 
 			$scope.addCard = function(list) {
-				console.log(list);
-				if(list.cards && list.cards.length < 3 ) {
-					list.showAddCard = true;
-				}
-				else if(!list.cards){
-					list.showAddCard = true;
-				}
-				else if(list.cards.length ==2) {
-					alert("Cannot add more cards");
-				}
+				
+				list.showAddCard = true;
 			}
 
 			$scope.saveCard = function(list,cardTitle) {
@@ -102,7 +110,6 @@ var demoApp=angular.module('zrelloApp',['ui.router','ngRoute','ngDragDrop']);
 						list.cards.push(card);
 					}			
 					else if(list.cards.length == 0) {
-						console.log("here")
 						list.cards = [];
 						list.cards.push(card);
 					}	
@@ -136,7 +143,6 @@ var demoApp=angular.module('zrelloApp',['ui.router','ngRoute','ngDragDrop']);
 	demoApp.controller('cardController',function($scope,Services,$state,$stateParams) {
 		function init() {
 			console.log($stateParams.id);
-			//$scope.card = Services.card;
 			var data = {
 				card_id : $stateParams.id
 			}
@@ -150,7 +156,6 @@ var demoApp=angular.module('zrelloApp',['ui.router','ngRoute','ngDragDrop']);
 			});
 
 		}
-
 		$scope.deleteCard = function(card) {
 			var data = {
 				card_id : card.card_id
